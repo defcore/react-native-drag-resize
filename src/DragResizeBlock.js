@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Dimensions,
   View,
@@ -181,10 +181,12 @@ export class DragResizeBlock extends Component {
      */
     this.connectorsMap[CONNECTOR_CENTER] = {
       calculateX: (width) => {
-        return width / 2 - CONNECTOR_SIZE / 2;
+        // return width / 2 - CONNECTOR_SIZE / 2;
+        return CONNECTOR_SIZE;
       },
       calculateY: (height) => {
-        return height / 2 - CONNECTOR_SIZE / 2;
+        // return height / 2 - CONNECTOR_SIZE / 2;
+        return CONNECTOR_SIZE;
       },
       onStart: this.onDragStart,
       onMove: this.onDrag,
@@ -204,6 +206,7 @@ export class DragResizeBlock extends Component {
     if (onPress !== null) {
       onPress(event);
     }
+
   }
 
   /**
@@ -663,18 +666,35 @@ export class DragResizeBlock extends Component {
     } = this.state;
 
     return connectors.map((connectorType) => {
-      return (
-        <Connector
-          key={connectorType}
-          type={connectorType}
-          size={CONNECTOR_SIZE}
-          x={this.connectorsMap[connectorType].calculateX(w)}
-          y={this.connectorsMap[connectorType].calculateY(h)}
-          onStart={this.connectorsMap[connectorType].onStart}
-          onMove={this.connectorsMap[connectorType].onMove}
-          onEnd={this.connectorsMap[connectorType].onEnd}
-        />
-      );
+      if (connectorType === CONNECTOR_CENTER) {
+        return (
+
+          <Connector
+            key={connectorType}
+            type={connectorType}
+            size={'90%'}
+            style={{ backgroundColor: 'transparent', borderWidth: 0 }}
+            x={this.connectorsMap[connectorType].calculateX(w)}
+            y={this.connectorsMap[connectorType].calculateY(h)}
+            onStart={this.connectorsMap[connectorType].onStart}
+            onMove={this.connectorsMap[connectorType].onMove}
+            onEnd={this.connectorsMap[connectorType].onEnd}
+          />
+        )
+      } else
+        return (
+
+          <Connector
+            key={connectorType}
+            type={connectorType}
+            size={CONNECTOR_SIZE}
+            x={this.connectorsMap[connectorType].calculateX(w)}
+            y={this.connectorsMap[connectorType].calculateY(h)}
+            onStart={this.connectorsMap[connectorType].onStart}
+            onMove={this.connectorsMap[connectorType].onMove}
+            onEnd={this.connectorsMap[connectorType].onEnd}
+          />
+        );
     });
   }
 

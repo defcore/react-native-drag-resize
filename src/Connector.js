@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   PanResponder,
   View,
@@ -98,20 +98,21 @@ export class Connector extends Component {
       x,
       y,
       size,
+      style
     } = this.props;
 
     return (
       <View
-        style={{
+        style={[{
           position: 'absolute',
           left: x,
           top: y,
           width: size,
           height: size,
           borderWidth: 2,
-          borderColor: 'black',
+          borderColor: '#26d07c',
           backgroundColor: 'white'
-        }}
+        }, style]}
         {...this._panResponder.panHandlers}
       />
     );
