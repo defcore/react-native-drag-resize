@@ -1,6 +1,6 @@
 {
-  "name": "@im/react-native-drag-resize",
-  "version": "1.0.3",
+  "name": "@infominds/react-native-drag-resize",
+  "version": "1.0.4",
   "description": "React Native component for draggable and resizable manipulation.",
   "main": "index.js",
   "scripts": {

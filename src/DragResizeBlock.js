@@ -556,10 +556,12 @@ export class DragResizeBlock extends Component {
     });
 
     if (onResizeEnd !== null) {
-      onResizeEnd([
-        this.state.x,
-        this.state.y,
-      ]);
+      onResizeEnd({
+        x: this.state.x,
+        y: this.state.y,
+        w: this.state.w,
+        h: this.state.h
+      });
     }
   }
 
@@ -645,10 +647,12 @@ export class DragResizeBlock extends Component {
     });
 
     if (onDragEnd !== null) {
-      onDragEnd([
-        this.state.x,
-        this.state.y,
-      ]);
+      onDragEnd({
+        x: this.state.x,
+        y: this.state.y,
+        w: this.state.w,
+        h: this.state.h
+      });
     }
   }
 
